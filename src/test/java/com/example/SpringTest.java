@@ -90,7 +90,8 @@ public class SpringTest {
      * After retrieving the AccountRepository bean, it should exhibit the functionality of a JPARepository
      * for an "Account" entity.
      */
-    @Test
+    @SuppressWarnings("unchecked")
+	@Test
     public void accountRepositoryIsRepositoryTest() throws ReflectiveOperationException {
         AccountRepository repository = applicationContext.getBean(AccountRepository.class);
         Method[] repositoryMethods = repository.getClass().getMethods();
