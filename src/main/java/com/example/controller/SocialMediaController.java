@@ -88,18 +88,18 @@ public class SocialMediaController {
 
     @GetMapping("/messages/{messageId}")
     public ResponseEntity<?> getMessageById(@PathVariable int messageId) {
-        try {
-          
+       
+          try{
             Message message = messageService.getMessageById(messageId);
 
             if (message != null) {
                 return ResponseEntity.ok(message);
             } else {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+                return ResponseEntity.ok().build();
             }
        } catch (NumberFormatException e) {
-           return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid message ID format.");
-       }
+      return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid message ID format.");
+      }
     }
 
     @DeleteMapping("/messages/{messageId}")
@@ -117,14 +117,14 @@ public class SocialMediaController {
            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid format");
         }
     }
-@PutMapping("/messages/{messageId}")
+@PatchMapping("/messages/{messageId}")
     public ResponseEntity<?> UpdatedMessage(@PathVariable int messageId, @RequestBody Message updatedMessage) {
         try {
             
             Message updated = messageService.UpdatedMessage(messageId, updatedMessage.getMessageText());
             if(updated != null){
 
-            return ResponseEntity.ok(updated);
+            return ResponseEntity.ok(1);
             }
             else{
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(" Not Found");
