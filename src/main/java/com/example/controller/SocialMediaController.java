@@ -66,10 +66,11 @@ public class SocialMediaController {
     @PostMapping("/messages")
     public  ResponseEntity<?> CreateMessage(@RequestBody Message message ) {
 
-       try {
-         Message createdMessage = messageService.CreateMessage(message);
+         try {
 
-            if (createdMessage != null) {
+            Message createdMessage = messageService.CreateMessage(message);
+            
+             if (createdMessage != null) {
                 return ResponseEntity.ok(createdMessage);
             } else {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -87,8 +88,8 @@ public class SocialMediaController {
 
     @GetMapping("/messages/{messageId}")
     public ResponseEntity<?> getMessageById(@PathVariable int messageId) {
-       
-          try{
+        
+     try{
             Message message = messageService.getMessageById(messageId);
 
             if (message != null) {
