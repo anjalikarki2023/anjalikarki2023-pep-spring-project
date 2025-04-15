@@ -67,8 +67,7 @@ public class SocialMediaController {
     public  ResponseEntity<?> CreateMessage(@RequestBody Message message ) {
 
        try {
-        
-        Message createdMessage = messageService.CreateMessage(message);
+         Message createdMessage = messageService.CreateMessage(message);
 
             if (createdMessage != null) {
                 return ResponseEntity.ok(createdMessage);
