@@ -65,10 +65,10 @@ public class SocialMediaController {
 
     @PostMapping("/messages")
     public  ResponseEntity<?> CreateMessage(@RequestBody Message message ) {
-      
-        try {
 
-            Message createdMessage = messageService.CreateMessage(message);
+       try {
+        
+        Message createdMessage = messageService.CreateMessage(message);
 
             if (createdMessage != null) {
                 return ResponseEntity.ok(createdMessage);
